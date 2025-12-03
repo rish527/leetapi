@@ -1,9 +1,10 @@
 import express from 'express';
 import { getLast20Submissions } from './getSubmission.js';
 import { getSubmissionDetails } from './index.js';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Replace with your actual username
 // const USERNAME = "rish527";
@@ -41,7 +42,7 @@ app.get('/:username', async (req, res) => {
         }
 
         res.json({
-            username: USERNAME,
+            username: username,
             count: detailedSubmissions.length,
             submissions: detailedSubmissions
         });
